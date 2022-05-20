@@ -15,7 +15,9 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(logger('dev'))
-app.use(helmet())
+app.use(helmet({
+    crossOriginResourcePolicy: false,
+  }));
 app.locals.baseurl = "http://localhost:" + port + "/";
 app.use(express.static(path.join(__dirname + '/public')))
 app.use('/api',mainRouter)
